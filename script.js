@@ -10,11 +10,17 @@ let lastOperator;
 const resultLine = document.querySelector(".result-line");
 
 function handleClickedButton(button) {
+    const originColor = button.style.backgroundColor;
+    button.style.backgroundColor = "grey";
   if (button.innerText >= "0" && button.innerText <= "9") {
     appendToScreen(button.innerText);
   } else {
     performOperation(button.innerText);
   }
+  setTimeout(function(){
+    button.style.backgroundColor = originColor;
+  },100);
+  
 }
 
 function appendToScreen(value) {
@@ -83,5 +89,5 @@ function doOperation() {
       answer = prevVal * currentVal;
       break;
   }
-  resultLine.innerText = answer;
+  resultLine.innerText = answer.toFixed(2);
 }
