@@ -1,33 +1,29 @@
-const buttons = document
+document
   .querySelector(".container")
   .addEventListener("click", function (event) {
-    handleClickedButton(event.target);
+    handleClickedButton(event.target.innerText);
   });
 
 let currentVal = 0;
 let prevVal = 0;
-let lastOperator;
+let lastOperator = null;
 const resultLine = document.querySelector(".result-line");
 
-function handleClickedButton(button) {
-    const originColor = button.style.backgroundColor;
-    button.style.backgroundColor = "grey";
-  if (button.innerText >= "0" && button.innerText <= "9") {
-    appendToScreen(button.innerText);
+function handleClickedButton(value) {
+  if (isNaN(parseInt(value))) {
+    performOperation(value);
   } else {
-    performOperation(button.innerText);
+    handleNumber(value);
   }
-  setTimeout(function(){
-    button.style.backgroundColor = originColor;
-  },100);
-  
 }
 
-function appendToScreen(value) {
+function handleNumber(value) {
   if (resultLine.innerText === "0") {
     resultLine.innerText = value;
-  } else {
+  } else if(lastOperator == null) {
     resultLine.innerText += value;
+  } else {
+    resultLine.innerText = value;
   }
 }
 
@@ -35,6 +31,7 @@ function performOperation(value) {
   switch (value) {
     case "C":
       resultLine.innerText = "0";
+      lastOperator = null;
       break;
     case "←":
       if (resultLine.innerText.length == 1) {
@@ -49,26 +46,23 @@ function performOperation(value) {
     case "/":
       prevVal = parseInt(resultLine.innerText);
       lastOperator = "/";
-      resultLine.innerText = "0";
       break;
     case "+":
       prevVal = parseInt(resultLine.innerText);
       lastOperator = "+";
-      resultLine.innerText = "0";
       break;
     case "*":
       prevVal = parseInt(resultLine.innerText);
       lastOperator = "*";
-      resultLine.innerText = "0";
       break;
     case "-":
       prevVal = parseInt(resultLine.innerText);
       lastOperator = "-";
-      resultLine.innerText = "0";
       break;
     case "=":
       currentVal = parseInt(resultLine.innerText);
       doOperation();
+      lastOperator = null;
       break;
   }
 }
@@ -89,5 +83,7 @@ function doOperation() {
       answer = prevVal * currentVal;
       break;
   }
-  resultLine.innerText = answer.toFixed(2);
+  if (lastOperator !== null && answer)
+    if (Number.isInteger(answer)) resultLine.innerText = answer;
+    else resultLine.innerText = answer.toFixed(5);
 }
