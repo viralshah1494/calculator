@@ -3,9 +3,9 @@
 }
 
 .calc {
-    width: 400px;
     background-color: black;
     color: white;
+    max-width: 18%;
 }
 
 .result-line{
@@ -35,10 +35,9 @@
 }
 
 
-button :hover{
+.common-button:hover{
     background-color: white;
 }
-
 
 .size-2{
     width: 49.7%;
