@@ -36,7 +36,24 @@
 
 
 .common-button:hover{
-    background-color: white;
+    background-color:#ebebeb;
+}
+
+.common-button:active{
+    background-color: #bbbcbe;
+}
+
+.common-button:last-child{
+    background-color: #df974c;
+    color: white;
+}
+
+.common-button:last-child:hover{
+    background-color: #dfb07e;
+}
+
+.common-button:last-child:active{
+    background-color: #dd8d37;
 }
 
 .size-2{
@@ -46,9 +63,3 @@
 .size-3{
     width: 75%;
 }
-
-.last-child {
-    background-color: #df974c;
-    color: white;
-}
-
