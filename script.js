@@ -7,7 +7,8 @@ document
 let currentVal = 0;
 let prevVal = 0;
 let lastOperator = null;
-const resultLine = document.querySelector(".result-line");
+const resultLine = document.querySelector(".result");
+const operator = document.querySelector(".operator");
 
 function handleClickedButton(value) {
   if (isNaN(parseInt(value))) {
@@ -32,6 +33,7 @@ function performOperation(value) {
     case "C":
       resultLine.innerText = "0";
       lastOperator = null;
+      operator.innerText = "";
       break;
     case "←":
       if (resultLine.innerText.length == 1) {
@@ -46,23 +48,28 @@ function performOperation(value) {
     case "/":
       prevVal = parseInt(resultLine.innerText);
       lastOperator = "/";
+      operator.innerText = "/";
       break;
     case "+":
       prevVal = parseInt(resultLine.innerText);
       lastOperator = "+";
+      operator.innerText = "+";
       break;
     case "*":
       prevVal = parseInt(resultLine.innerText);
       lastOperator = "*";
+      operator.innerText = "*";
       break;
     case "-":
       prevVal = parseInt(resultLine.innerText);
       lastOperator = "-";
+      operator.innerText = "-";
       break;
     case "=":
       currentVal = parseInt(resultLine.innerText);
       doOperation();
       lastOperator = null;
+      operator.innerText = "=";
       break;
   }
 }
