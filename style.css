@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+
+.calc {
+    width: 400px;
+    background-color: black;
+    color: white;
+}
+
+.result-line{
+    color: white;
+    font-size: 40px;
+    font-family: "Courier New", Courier, monospace;
+    text-align: right;
+    padding: 20px 5px;
+}
+
+.line {
+    display: flex;
+    align-content: stretch;
+    justify-content: space-between;
+    margin-bottom: 0.7%;
+}
+
+.common-button{
+    background-color: #d8d9db;
+    color: black;
+    height: 100px;
+    width: 24.5%;
+    border: none;
+    border-radius: 0;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+
+button :hover{
+    background-color: white;
+}
+
+
+.size-2{
+    width: 49.7%;
+}
+
+.size-3{
+    width: 75%;
+}
+
+.last-child {
+    background-color: #df974c;
+    color: white;
+}
+
